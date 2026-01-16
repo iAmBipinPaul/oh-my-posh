@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "final_space": true,
+  "console_title_template": "{{ .Folder }} | {{ .UserName }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "foreground": "#F8FAFC",
+          "background": "#0F172A",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if .WSL }}\ue712{{ else }}\ue70f{{ end }} "
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#F8FAFC",
+          "background": "#3D1A99",
+          "template": " \uf2bd {{ .UserName }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#F8FAFC",
+          "background": "#764AF1",
+          "template": " \uf07c {{ .Path }} ",
+          "options": {
+            "style": "agnoster_short",
+            "max_depth": 3
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#0F172A",
+          "background": "#10B981",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#F59E0B{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#EC4899{{ end }}",
+            "{{ if gt .Ahead 0 }}#06B6D4{{ end }}",
+            "{{ if gt .Behind 0 }}#A78BFA{{ end }}"
+          ],
+          "template": " \ue725 {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "options": {
+            "fetch_status": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "ipify",
+          "style": "diamond",
+          "foreground": "#F8FAFC",
+          "background": "#0EA5E9",
+          "leading_diamond": "\ue0b2",
+          "template": " \uf817 {{ .IP }} ",
+          "options": {
+            "http_timeout": 2000          
+          }
+        },
+        {
+          "type": "owm",
+          "style": "diamond",
+          "foreground": "#F8FAFC",
+          "background": "#1E293B",
+          "leading_diamond": "\ue0b2",
+          "template": " {{ .Weather }} {{ .Temperature }}°C ",
+          "options": {
+            "api_key": "0e61ec5f883dc81e3f75a2dda4c19198",
+            "location": "Kathmandu,NP",
+            "units": "metric",
+            "http_timeout": 5000
+          }
+        },
+        {
+          "type": "dotnet",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#8B5CF6",
+          "template": " \ue77f {{ .Full }} "
+        },
+        {
+          "type": "docker",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#06B6D4",
+          "template": " \uf308 {{ .Context }} "
+        },
+        {
+          "type": "kubectl",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#3B82F6",
+          "template": " \ufd31 {{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#EC4899",
+          "trailing_diamond": "\ue0b4",
+          "template": " \uf252 {{ .FormattedMs }} ",
+          "options": {
+            "threshold": 500,
+            "style": "roundrock"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#10B981",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#EF4444{{ end }}"
+          ],
+          "template": "\u276f ",
+          "options": {
+            "always_enabled": true
+          }
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "foreground": "#64748B",
+    "background": "transparent",
+    "template": "\u276f "
+  },
+  "secondary_prompt": {
+    "foreground": "#A78BFA",
+    "background": "transparent",
+    "template": "\u276f\u276f "
+  }
+}
