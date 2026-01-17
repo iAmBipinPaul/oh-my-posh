@@ -23,7 +23,10 @@
           "powerline_symbol": "\ue0b0",
           "foreground": "#F8FAFC",
           "background": "#3D1A99",
-          "template": " \uf2bd {{ .UserName }} "
+          "background_templates": [
+            "{{ if .Root }}#EF4444{{ end }}"
+          ],
+          "template": " {{ if .Root }}\uf0e7 ADMIN {{ else }}\uf2bd {{ end }}{{ .UserName }} "
         },
         {
           "type": "path",
@@ -49,9 +52,10 @@
             "{{ if gt .Ahead 0 }}#06B6D4{{ end }}",
             "{{ if gt .Behind 0 }}#A78BFA{{ end }}"
           ],
-          "template": " \ue725 {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "template": " \ue725 {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
           "options": {
-            "fetch_status": true
+            "fetch_status": true,
+            "fetch_stash_count": true
           }
         }
       ]
@@ -61,29 +65,70 @@
       "alignment": "right",
       "segments": [
         {
-          "type": "ipify",
+          "type": "time",
           "style": "diamond",
           "foreground": "#F8FAFC",
           "background": "#0EA5E9",
           "leading_diamond": "\ue0b2",
-          "template": " \uf817 {{ .IP }} ",
-          "options": {
-            "http_timeout": 2000          
-          }
+          "template": " \uf017 {{ .CurrentDate | date \"3:04 PM\" }} "
         },
         {
-          "type": "owm",
-          "style": "diamond",
+          "type": "shell",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
           "foreground": "#F8FAFC",
-          "background": "#1E293B",
-          "leading_diamond": "\ue0b2",
-          "template": " {{ .Weather }} {{ .Temperature }}°C ",
-          "options": {
-            "api_key": "0e61ec5f883dc81e3f75a2dda4c19198",
-            "location": "Kathmandu,NP",
-            "units": "metric",
-            "http_timeout": 5000
-          }
+          "background": "#475569",
+          "template": " \uf489 {{ .Name }} "
+        },
+        {
+          "type": "sysinfo",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#64748B",
+          "template": " \uf85a {{ round .PhysicalPercentUsed .Precision }}% "
+        },
+        {
+          "type": "battery",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#10B981",
+          "background_templates": [
+            "{{ if lt .Percentage 20 }}#EF4444{{ end }}",
+            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#F59E0B{{ end }}"
+          ],
+          "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }} "
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#10B981",
+          "template": " \ue718 {{ .Full }} "
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#3776AB",
+          "template": " \ue235 {{ .Full }} "
+        },
+        {
+          "type": "go",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#F8FAFC",
+          "background": "#00ADD8",
+          "template": " \ue627 {{ .Full }} "
         },
         {
           "type": "dotnet",
