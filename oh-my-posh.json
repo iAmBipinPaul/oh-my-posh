@@ -37,7 +37,9 @@
           "template": " \uf07c {{ .Path }} ",
           "options": {
             "style": "agnoster_short",
-            "max_depth": 3
+            "max_depth": 3,
+            "folder_icon": "\uf07b",
+            "home_icon": "\uf015"
           }
         },
         {
@@ -54,8 +56,7 @@
           ],
           "template": " \ue725 {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
           "options": {
-            "fetch_status": true,
-            "fetch_stash_count": true
+            "fetch_status": true
           }
         }
       ]
@@ -70,7 +71,7 @@
           "foreground": "#F8FAFC",
           "background": "#0EA5E9",
           "leading_diamond": "\ue0b2",
-          "template": " \uf017 {{ .CurrentDate | date \"3:04 PM\" }} "
+          "template": " \uf017 {{ .CurrentDate | date \"Mon 3:04 PM\" }} "
         },
         {
           "type": "shell",
@@ -79,7 +80,7 @@
           "invert_powerline": true,
           "foreground": "#F8FAFC",
           "background": "#475569",
-          "template": " \uf489 {{ .Name }} "
+          "template": " \u276f {{ .Name }} "
         },
         {
           "type": "sysinfo",
@@ -88,7 +89,10 @@
           "invert_powerline": true,
           "foreground": "#F8FAFC",
           "background": "#64748B",
-          "template": " \uf85a {{ round .PhysicalPercentUsed .Precision }}% "
+          "template": " \uf538 {{ round .PhysicalPercentUsed .Precision }}% ",
+          "options": {
+            "precision": 0
+          }
         },
         {
           "type": "battery",
