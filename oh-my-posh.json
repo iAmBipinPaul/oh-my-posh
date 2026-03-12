@@ -11,8 +11,8 @@
         {
           "type": "os",
           "style": "diamond",
-          "foreground": "#F8FAFC",
-          "background": "#0F172A",
+          "foreground": "#E2E8F0",
+          "background": "#111827",
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0b0",
           "template": " {{ if .WSL }}\ue712{{ else }}\ue70f{{ end }} "
@@ -21,10 +21,10 @@
           "type": "session",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#F8FAFC",
-          "background": "#3D1A99",
+          "foreground": "#E2E8F0",
+          "background": "#1F2937",
           "background_templates": [
-            "{{ if .Root }}#EF4444{{ end }}"
+            "{{ if .Root }}#F87171{{ end }}"
           ],
           "template": " {{ if .Root }}\uf0e7 ADMIN {{ else }}\uf2bd {{ end }}{{ .UserName }} "
         },
@@ -32,8 +32,8 @@
           "type": "path",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#F8FAFC",
-          "background": "#764AF1",
+          "foreground": "#111827",
+          "background": "#60A5FA",
           "template": " \uf07c {{ .Path }} ",
           "options": {
             "style": "agnoster_short",
@@ -46,13 +46,13 @@
           "type": "git",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#0F172A",
-          "background": "#10B981",
+          "foreground": "#111827",
+          "background": "#4ADE80",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#F59E0B{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#EC4899{{ end }}",
-            "{{ if gt .Ahead 0 }}#06B6D4{{ end }}",
-            "{{ if gt .Behind 0 }}#A78BFA{{ end }}"
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FBBF24{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FBBF24{{ end }}",
+            "{{ if gt .Ahead 0 }}#38BDF8{{ end }}",
+            "{{ if gt .Behind 0 }}#94A3B8{{ end }}"
           ],
           "template": " \ue725 {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
           "options": {
@@ -68,8 +68,8 @@
         {
           "type": "time",
           "style": "diamond",
-          "foreground": "#F8FAFC",
-          "background": "#0EA5E9",
+          "foreground": "#111827",
+          "background": "#38BDF8",
           "leading_diamond": "\ue0b2",
           "template": " \uf017 {{ .CurrentDate | date \"Mon 3:04 PM\" }} "
         },
@@ -78,8 +78,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#475569",
+          "foreground": "#E2E8F0",
+          "background": "#334155",
           "template": " \u276f {{ .Name }} "
         },
         {
@@ -87,8 +87,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#64748B",
+          "foreground": "#E2E8F0",
+          "background": "#475569",
           "template": " \uf538 {{ round .PhysicalPercentUsed .Precision }}% ",
           "options": {
             "precision": 0
@@ -99,11 +99,11 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#10B981",
+          "foreground": "#111827",
+          "background": "#4ADE80",
           "background_templates": [
-            "{{ if lt .Percentage 20 }}#EF4444{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#F59E0B{{ end }}"
+            "{{ if lt .Percentage 20 }}#F87171{{ end }}",
+            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FBBF24{{ end }}"
           ],
           "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }} "
         },
@@ -112,8 +112,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#10B981",
+          "foreground": "#111827",
+          "background": "#4ADE80",
           "template": " \ue718 {{ .Full }} "
         },
         {
@@ -121,8 +121,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#3776AB",
+          "foreground": "#111827",
+          "background": "#60A5FA",
           "template": " \ue235 {{ .Full }} "
         },
         {
@@ -130,8 +130,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#00ADD8",
+          "foreground": "#111827",
+          "background": "#38BDF8",
           "template": " \ue627 {{ .Full }} "
         },
         {
@@ -139,8 +139,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#8B5CF6",
+          "foreground": "#111827",
+          "background": "#94A3B8",
           "template": " \ue77f {{ .Full }} "
         },
         {
@@ -148,8 +148,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#06B6D4",
+          "foreground": "#111827",
+          "background": "#38BDF8",
           "template": " \uf308 {{ .Context }} "
         },
         {
@@ -157,8 +157,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#3B82F6",
+          "foreground": "#111827",
+          "background": "#60A5FA",
           "template": " \ufd31 {{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} "
         },
         {
@@ -166,8 +166,8 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#F8FAFC",
-          "background": "#EC4899",
+          "foreground": "#111827",
+          "background": "#FBBF24",
           "trailing_diamond": "\ue0b4",
           "template": " \uf252 {{ .FormattedMs }} ",
           "options": {
@@ -197,9 +197,9 @@
         {
           "type": "status",
           "style": "plain",
-          "foreground": "#10B981",
+          "foreground": "#4ADE80",
           "foreground_templates": [
-            "{{ if gt .Code 0 }}#EF4444{{ end }}"
+            "{{ if gt .Code 0 }}#F87171{{ end }}"
           ],
           "template": "\u276f ",
           "options": {
@@ -210,12 +210,12 @@
     }
   ],
   "transient_prompt": {
-    "foreground": "#64748B",
+    "foreground": "#475569",
     "background": "transparent",
     "template": "\u276f "
   },
   "secondary_prompt": {
-    "foreground": "#A78BFA",
+    "foreground": "#94A3B8",
     "background": "transparent",
     "template": "\u276f\u276f "
   }
